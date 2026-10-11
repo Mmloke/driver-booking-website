@@ -1,4 +1,6 @@
 import Link from 'next/link'
+import SiteHeader from '@/components/site-header'
+import SiteFooter from '@/components/site-footer'
 import BookingForm from '@/components/booking-form'
 
 export default function BookPage() {
@@ -35,7 +37,7 @@ export default function BookPage() {
 
             <div className="rounded-[2rem] border border-slate-200 bg-white p-6 shadow-sm">
               <h3 className="text-xl font-black text-slate-900">تحتاج دعمًا سريعًا؟</h3>
-              <p className="mt-4 text-slate-600">يمكنك التواصل معنا مباشرة عبر الهاتف أو البريد في أي وقت لتعديل الحجز.</p>
+              <p className="mt-4 text-slate-600">يمكنك التواصل معنا مباشرة عبر الهاتف أو البريد في أي وقت ��تعديل الحجز.</p>
               <div className="mt-5 space-y-3 text-sm text-slate-700">
                 <p>📞 +966 500 123 456</p>
                 <p>✉️ bookings@drivercare.com</p>

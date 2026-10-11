@@ -1,37 +1,43 @@
 import Link from 'next/link'
+import SiteHeader from '@/components/site-header'
+import SiteFooter from '@/components/site-footer'
+
+const serviceCards = [
+  {
+    title: 'نقل أفراد',
+    subtitle: 'رحلات شخصية داخل المدينة',
+    description: 'خدمة سريعة ومريحة للرحلات اليومية أو الترفيهية، مع سائقين مدربين على التعامل مع احتياجات الزبائن.',
+    features: ['توصيل من الباب إلى الباب', 'تنظيم مواعيد مرن', 'سيارات نظيفة ومريحة'],
+    price: 'من 200 جنيه',
+    image: 'https://images.unsplash.com/photo-1553440569-bcc63803a83d?auto=format&fit=crop&w=1200&q=80'
+  },
+  {
+    title: 'رحلات الأعمال',
+    subtitle: 'لمؤسساتك وموظفيك',
+    description: 'خدمة احترافية تناسب الاجتماعات والزيارات والمواعيد المؤسسية مع توجه دقيق للوقت.',
+    features: ['حضور في الوقت المحدد', 'سائقون محترفون', 'تأكيدات دقيقة عبر الرسائل'],
+    price: 'من 350 جنيه',
+    image: 'https://images.unsplash.com/photo-1493238792000-8113da705763?auto=format&fit=crop&w=1200&q=80'
+  },
+  {
+    title: 'رحلات العائلة',
+    subtitle: 'راحة وأمان للرحلات العائلية',
+    description: 'نقدم سيارات واسعة ومريحة مع خدمة مناسبة للأسر والرحلات الطويلة وتجمعات العائلة.',
+    features: ['مساحة كافية لعدد أكبر', 'خدمة مرنة', 'عناية خاصة بالأطفال'],
+    price: 'من 450 جنيه',
+    image: 'https://images.unsplash.com/photo-1511919884226-fd3cad34687c?auto=format&fit=crop&w=1200&q=80'
+  },
+  {
+    title: 'النقل إلى المطار',
+    subtitle: 'رحلات بالوقت المناسب',
+    description: 'خدمة دقيقة للتحضير للمطار مع متابعة وقت الوصول وتأكيد التوقيت لضمان تجربة خالية من التوتر.',
+    features: ['مراقبة الوقت', 'استلام من المنزل', 'قيمة توقع دقيقة'],
+    price: 'من 280 جنيه',
+    image: 'https://images.unsplash.com/photo-1436491865332-7a61a109cc05?auto=format&fit=crop&w=1200&q=80'
+  }
+]
 
 export default function ServicesPage() {
-  const serviceCards = [
-    {
-      title: 'نقل أفراد',
-      subtitle: 'رحلات شخصية داخل المدينة',
-      description: 'خدمة سريعة ومريحة للرحلات اليومية أو الترفيهية، م�� سائقين مدربين على التعامل مع احتياجات الزبائن.',
-      features: ['توصيل من الباب إلى الباب', 'تنظيم مواعيد مرن', 'سيارات نظيفة ومريحة'],
-      price: 'من 200 جنيه'
-    },
-    {
-      title: 'رحلات الأعمال',
-      subtitle: 'لمؤسساتك وموظفيك',
-      description: 'خدمة احترافية تناسب الاجتماعات والزيارات والمواعيد المؤسسية مع توجه دقيق للوقت.',
-      features: ['حضور في الوقت المحدد', 'سائقون محترفون', 'تأكيدات دقيقة عبر الرسائل'],
-      price: 'من 350 جنيه'
-    },
-    {
-      title: 'رحلات العائلة',
-      subtitle: 'راحة وأمان للرحلات العائلية',
-      description: 'نقدم سيارات واسعة ومريحة مع خدمة مناسبة للأسر والرحلات الطويلة وتجمعات العائلة.',
-      features: ['مساحة كافية لعدد أكبر', 'خدمة مرنة', 'عناية خاصة بالأطفال'],
-      price: 'من 450 جنيه'
-    },
-    {
-      title: 'النقل إلى المطار',
-      subtitle: 'رحلات بالوقت المناسب',
-      description: 'خدمة دقيقة للتحضير للمطار مع متابعة وقت الوصول وتأكيد التوقيت لضمان تجربة خالية من التوتر.',
-      features: ['مراقبة الوقت', 'استلام من المنزل', 'قيمة توقع دقيقة'],
-      price: 'من 280 جنيه'
-    }
-  ]
-
   return (
     <main className="min-h-screen bg-slate-50 text-slate-800">
       <SiteHeader />
@@ -58,6 +64,8 @@ export default function ServicesPage() {
                 <span className="rounded-full bg-blue-100 px-3 py-1 text-xs font-bold text-brand-blue">{service.price}</span>
               </div>
 
+              <img src={service.image} alt={service.title} className="mt-5 h-56 w-full rounded-2xl object-cover" />
+
               <p className="mt-5 text-slate-600">{service.description}</p>
 
               <ul className="mt-6 space-y-3">
@@ -81,7 +89,7 @@ export default function ServicesPage() {
         <div className="mx-auto max-w-7xl px-6 md:px-10 lg:px-16">
           <div className="grid gap-8 rounded-[2rem] border border-slate-200 bg-slate-50 p-8 md:grid-cols-3">
             {[
-              ['سائقون مدربون', 'فريق محترف ومهذب مع خبرة في التنقل داخل المدينة'],
+              ['سا��قون مدربون', 'فريق محترف ومهذب مع خبرة في التنقل داخل المدينة'],
               ['خدمة بدعم مستمر', 'متاح دعم مباشر طوال اليوم لتنسيق الرحلات'],
               ['أسعار شفافة', 'بدون رسوم مخفية أو تغييرات غير متوقعة']
             ].map(([title, text]) => (

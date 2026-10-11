@@ -1,147 +1,45 @@
-'use client'
+import Link from 'next/link'
 
-import { FormEvent, useState } from 'react'
+const navItems = [
+  { href: '/', label: 'الرئيسية' },
+  { href: '/services', label: 'الخدمات' },
+  { href: '/book', label: 'احجز الآن' },
+  { href: '/about', label: 'من نحن' },
+  { href: '/contact', label: 'اتصل بنا' },
+  { href: '/faq', label: 'الأسئلة الشائعة' }
+]
 
-const initialState = {
-  name: '',
-  phone: '',
-  email: '',
-  date: '',
-  time: '',
-  passengers: '1',
-  service: 'نقل أفراد',
-  notes: ''
-}
-
-export default function BookingForm() {
-  const [form, setForm] = useState(initialState)
-  const [error, setError] = useState('')
-  const [success, setSuccess] = useState('')
-
-  const updateField = (field: keyof typeof initialState, value: string) => {
-    setForm((prev) => ({ ...prev, [field]: value }))
-  }
-
-  const handleSubmit = (event: FormEvent) => {
-    event.preventDefault()
-
-    if (!form.name || !form.phone || !form.date || !form.time || !form.email) {
-      setError('يرجى تعبئة جميع الحقول الأساسية قبل الإرسال.')
-      setSuccess('')
-      return
-    }
-
-    setError('')
-    setSuccess(
-      `تم إرسال طلب الحجز بنجاح، رقم التأكيد: ${Math.random().toString(36).slice(2, 8).toUpperCase()}`
-    )
-    setForm(initialState)
-  }
-
+export default function SiteHeader() {
   return (
-    <form onSubmit={handleSubmit} className="space-y-5">
-      <div className="grid gap-5 md:grid-cols-2">
-        <div>
-          <label className="mb-2 block text-sm font-semibold text-slate-700">الاسم الكامل</label>
-          <input
-            value={form.name}
-            onChange={(e) => updateField('name', e.target.value)}
-            className="w-full rounded-xl border border-slate-200 bg-slate-50 px-4 py-3 outline-none transition focus:border-brand-blue"
-            placeholder="اسمك الكامل"
-          />
-        </div>
+    <header className="sticky top-0 z-50 border-b border-slate-200/80 bg-white/80 backdrop-blur-md">
+      <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4 md:px-10 lg:px-16">
+        <Link href="/" className="flex items-center gap-3">
+          <div className="flex h-11 w-11 items-center justify-center rounded-2xl bg-brand-blue text-lg font-black text-white shadow-soft">
+            S
+          </div>
+          <div>
+            <div className="text-lg font-black text-slate-900">سائقك</div>
+            <div className="text-[10px] uppercase tracking-[0.2em] text-slate-500">DriverCare</div>
+          </div>
+        </Link>
 
-        <div>
-          <label className="mb-2 block text-sm font-semibold text-slate-700">رقم الهاتف</label>
-          <input
-            value={form.phone}
-            onChange={(e) => updateField('phone', e.target.value)}
-            className="w-full rounded-xl border border-slate-200 bg-slate-50 px-4 py-3 outline-none transition focus:border-brand-blue"
-            placeholder="05xxxxxxxx"
-          />
-        </div>
+        <nav className="hidden items-center gap-7 md:flex">
+          {navItems.map((item) => (
+            <Link key={item.href} href={item.href} className="text-sm font-medium text-slate-700 transition hover:text-brand-blue">
+              {item.label}
+            </Link>
+          ))}
+        </nav>
 
-        <div>
-          <label className="mb-2 block text-sm font-semibold text-slate-700">البريد الإلكتروني</label>
-          <input
-            type="email"
-            value={form.email}
-            onChange={(e) => updateField('email', e.target.value)}
-            className="w-full rounded-xl border border-slate-200 bg-slate-50 px-4 py-3 outline-none transition focus:border-brand-blue"
-            placeholder="example@email.com"
-          />
-        </div>
-
-        <div>
-          <label className="mb-2 block text-sm font-semibold text-slate-700">نوع الخدمة</label>
-          <select
-            value={form.service}
-            onChange={(e) => updateField('service', e.target.value)}
-            className="w-full rounded-xl border border-slate-200 bg-slate-50 px-4 py-3 outline-none transition focus:border-brand-blue"
-          >
-            <option>نقل أفراد</option>
-            <option>رحلات الأعمال</option>
-            <option>رحلات العائلة</option>
-            <option>النقل إلى المطار</option>
-          </select>
-        </div>
-
-        <div>
-          <label className="mb-2 block text-sm font-semibold text-slate-700">تاريخ الرحلة</label>
-          <input
-            type="date"
-            value={form.date}
-            onChange={(e) => updateField('date', e.target.value)}
-            className="w-full rounded-xl border border-slate-200 bg-slate-50 px-4 py-3 outline-none transition focus:border-brand-blue"
-          />
-        </div>
-
-        <div>
-          <label className="mb-2 block text-sm font-semibold text-slate-700">الوقت</label>
-          <input
-            type="time"
-            value={form.time}
-            onChange={(e) => updateField('time', e.target.value)}
-            className="w-full rounded-xl border border-slate-200 bg-slate-50 px-4 py-3 outline-none transition focus:border-brand-blue"
-          />
+        <div className="flex items-center gap-3">
+          <Link href="/contact" className="hidden rounded-full border border-slate-200 px-4 py-2 text-sm font-semibold text-slate-700 md:inline-flex">
+            تواصل
+          </Link>
+          <Link href="/book" className="inline-flex rounded-full bg-brand-blue px-5 py-2.5 text-sm font-semibold text-white shadow-soft transition hover:bg-blue-600">
+            احجز الآن
+          </Link>
         </div>
       </div>
-
-      <div>
-        <label className="mb-2 block text-sm font-semibold text-slate-700">عدد الركاب</label>
-        <select
-          value={form.passengers}
-          onChange={(e) => updateField('passengers', e.target.value)}
-          className="w-full rounded-xl border border-slate-200 bg-slate-50 px-4 py-3 outline-none transition focus:border-brand-blue"
-        >
-          <option value="1">1 راكب</option>
-          <option value="2">2 راكب</option>
-          <option value="3">3 ركاب</option>
-          <option value="4">4 ركاب</option>
-          <option value="5+">5 ركاب أو أكثر</option>
-        </select>
-      </div>
-
-      <div>
-        <label className="mb-2 block text-sm font-semibold text-slate-700">ملاحظات إضافية</label>
-        <textarea
-          rows={4}
-          value={form.notes}
-          onChange={(e) => updateField('notes', e.target.value)}
-          className="w-full rounded-xl border border-slate-200 bg-slate-50 px-4 py-3 outline-none transition focus:border-brand-blue"
-          placeholder="اكتب أي تفاصيل إضافية أو متطلبات خاصة..."
-        />
-      </div>
-
-      {error ? <p className="rounded-xl border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-700">{error}</p> : null}
-      {success ? <p className="rounded-xl border border-green-200 bg-green-50 px-4 py-3 text-sm text-green-700">{success}</p> : null}
-
-      <button
-        type="submit"
-        className="inline-flex rounded-full bg-brand-blue px-6 py-3 text-sm font-semibold text-white transition hover:bg-blue-600"
-      >
-        تأكيد الحجز
-      </button>
-    </form>
+    </header>
   )
 }

@@ -1,47 +1,35 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+# سائقك | DriverCare
 
-:root {
-  --brand-blue: #2563eb;
-  --brand-green: #10b981;
-  --brand-gold: #f59e0b;
-  --slate-900: #0f172a;
-}
+موقع عربي حديث ومتجاوب يقدم خدمات النقل والسائقين مع حجز مباشر عبر الإنترنت.
 
-html {
-  scroll-behavior: smooth;
-}
+## التشغيل محليًا
 
-body {
-  margin: 0;
-  font-family: Arial, Helvetica, sans-serif;
-  background: #f8fafc;
-  color: #0f172a;
-}
+1. تأكد من تثبيت Node.js 18+.
+2. نصب الحزم:
+   ```bash
+   npm install
+   ```
+3. تشغيل الموقع:
+   ```bash
+   npm run dev
+   ```
+4. افتح المتصفح على:
+   ```bash
+   http://localhost:3000
+   ```
 
-* {
-  box-sizing: border-box;
-}
+## إعداد البريد الإلكتروني
 
-img {
-  display: block;
-  max-width: 100%;
-}
+1. انسخ ملف `.env.example` إلى `.env.local`
+2. أضف بيانات SMTP الخاصة بك
+3. تأكد من وجود إعدادات التطبيق ل Gmail أو مزود SMTP آخر
 
-a {
-  text-decoration: none;
-}
+مثال:
+```bash
+cp .env.example .env.local
+```
 
-button,
-input,
-textarea,
-select {
-  font: inherit;
-}
-
-@layer components {
-  .container-shell {
-    @apply mx-auto max-w-7xl px-6 md:px-10 lg:px-16;
-  }
-}
+## ملاحظات
+- الموقع يدعم العربية بالكامل
+- الصفحة الرئيسية، الخدمات، الحجز، من نحن، التواصل، الأسئلة الشائعة
+- الحجز يرسل بيانات الطلب إلى البريد الإلكتروني عند توفر SMTP

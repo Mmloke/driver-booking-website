@@ -1,10 +1,6 @@
-import { Metadata } from 'next'
-import './globals.css'
-
-export const metadata: Metadata = {
-  title: 'الرئيسية',
-  description: 'صفحة البداية لموقع خدمات السائقين وحجز الرحلات المباشر.'
-}
+import Link from 'next/link'
+import SiteHeader from '@/components/site-header'
+import SiteFooter from '@/components/site-footer'
 
 export default function HomePage() {
   return (
@@ -85,7 +81,7 @@ export default function HomePage() {
             {
               title: 'سائقين محترفين',
               description: 'فريق مدرب للتعامل مع الرحلات الشخصية والعمل، مع التركيز على الراحة والأمان.',
-              icon: '���'
+              icon: '🚘'
             },
             {
               title: 'حجز فوري',
@@ -195,7 +191,7 @@ export default function HomePage() {
         <div className="grid gap-6 md:grid-cols-3">
           {[
             'الخدمة كانت ممتازة من البداية إلى النهاية، وسائقنا كان مهذبًا جدًا ومنظمًا.',
-            'موقع الحجز سهل وب��يط، وتم تأكيد الرحلة بسرعة وبدون أي تعقيد.',
+            'موقع الحجز سهل وسريع، وتم تأكيد الرحلة بسرعة وبدون أي تعقيد.',
             'الراحة والوضوح في السعر أعجبني، وأنا أستعمل الخدمة في جميع زياراتي داخل المدينة.'
           ].map((quote, index) => (
             <blockquote key={quote} className="rounded-3xl border border-slate-200 bg-white p-6 shadow-sm">

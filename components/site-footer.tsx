@@ -1,45 +1,48 @@
 import Link from 'next/link'
 
-const navItems = [
-  { href: '/', label: 'الرئيسية' },
-  { href: '/services', label: 'الخدمات' },
-  { href: '/book', label: 'احجز الآن' },
-  { href: '/about', label: 'من نحن' },
-  { href: '/contact', label: 'اتصل بنا' },
-  { href: '/faq', label: 'الأسئلة الشائعة' }
-]
-
-export default function SiteHeader() {
+export default function SiteFooter() {
   return (
-    <header className="sticky top-0 z-50 border-b border-slate-200/80 bg-white/80 backdrop-blur-md">
-      <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4 md:px-10 lg:px-16">
-        <Link href="/" className="flex items-center gap-3">
-          <div className="flex h-11 w-11 items-center justify-center rounded-2xl bg-brand-blue text-lg font-black text-white shadow-soft">
-            S
+    <footer className="border-t border-slate-200 bg-white">
+      <div className="mx-auto grid max-w-7xl gap-10 px-6 py-12 md:grid-cols-3 md:px-10 lg:px-16">
+        <div>
+          <div className="flex items-center gap-3">
+            <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-brand-blue text-base font-black text-white">S</div>
+            <div>
+              <div className="text-lg font-black text-slate-900">سائقك</div>
+              <div className="text-[10px] uppercase tracking-[0.2em] text-slate-500">DriverCare</div>
+            </div>
           </div>
-          <div>
-            <div className="text-lg font-black text-slate-900">سائقك</div>
-            <div className="text-[10px] uppercase tracking-[0.2em] text-slate-500">DriverCare</div>
-          </div>
-        </Link>
+          <p className="mt-4 max-w-sm text-slate-600">
+            خدمات نقل مريحة وسريعة مع تجربة حجز مباشرة، ومهنية عالية، وتواصل واضح في كل خطوة.
+          </p>
+        </div>
 
-        <nav className="hidden items-center gap-7 md:flex">
-          {navItems.map((item) => (
-            <Link key={item.href} href={item.href} className="text-sm font-medium text-slate-700 transition hover:text-brand-blue">
-              {item.label}
-            </Link>
-          ))}
-        </nav>
+        <div>
+          <h3 className="text-lg font-black text-slate-900">روابط سريعة</h3>
+          <ul className="mt-4 space-y-2 text-sm text-slate-600">
+            <li><Link href="/services">الخدمات</Link></li>
+            <li><Link href="/book">احجز الآن</Link></li>
+            <li><Link href="/about">من نحن</Link></li>
+            <li><Link href="/faq">الأسئلة الشائعة</Link></li>
+          </ul>
+        </div>
 
-        <div className="flex items-center gap-3">
-          <Link href="/contact" className="hidden rounded-full border border-slate-200 px-4 py-2 text-sm font-semibold text-slate-700 md:inline-flex">
-            تواصل
-          </Link>
-          <Link href="/book" className="inline-flex rounded-full bg-brand-blue px-5 py-2.5 text-sm font-semibold text-white shadow-soft transition hover:bg-blue-600">
-            احجز الآن
-          </Link>
+        <div>
+          <h3 className="text-lg font-black text-slate-900">معلومات التواصل</h3>
+          <ul className="mt-4 space-y-2 text-sm text-slate-600">
+            <li>📞 +966 500 123 456</li>
+            <li>✉️ hello@drivercare.com</li>
+            <li>🕒 8:00 صباحاً — 11:00 مساءً</li>
+          </ul>
         </div>
       </div>
-    </header>
+
+      <div className="border-t border-slate-200 bg-slate-50">
+        <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4 text-sm text-slate-500 md:px-10 lg:px-16">
+          <p>© 2025 سائقك. جميع الحقوق محفوظة.</p>
+          <p>تم التطوير لتجربة سفر أنيقة وآمنة.</p>
+        </div>
+      </div>
+    </footer>
   )
 }
